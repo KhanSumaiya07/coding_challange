@@ -1,0 +1,35 @@
+.navbar-wrapper{
+  background-color: #4D4CFF;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 15px 25px;
+  gap: 30px;
+  justify-content: space-between;
+}
+.logo span{
+    color: #fff;
+}
+.nav-container{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-container a{
+    color: #fff;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo .logo-icon{
+    height: 30px;
+    color: #fff;
+}
+
+.cartIcon{
+    display: flex;
+}

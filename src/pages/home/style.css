@@ -1,0 +1,17 @@
+.heading{
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: #2e2e2e;
+    width: 50%;
+    text-align: center;
+}
+
+button{
+    background: #3F51B5;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+button a{
+    color: #fff;
+}
