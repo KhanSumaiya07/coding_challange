@@ -6,12 +6,12 @@ import { useNavigate } from "react-router-dom";
 
 
 const Popup = ({ onClose }) => {
-    const navigate = useNavigate()
+  const navigate = useNavigate()
   const { cart, increment, decrement } = useCart();
 
   // Convert cart object to array of items with qty > 0
   const items = Object.entries(cart).filter(([_, item]) => item.qty > 0);
-
+console.log(items)
   // Calculate total
   const total = items.reduce(
     (sum, [_, item]) => sum + item.qty * item.price,
@@ -61,7 +61,7 @@ const Popup = ({ onClose }) => {
             Save and Checkout
           </button>
 
-          <button onClick={onClose} className="cancel-btn">
+          <button style={{background:'transparent', color:'#3F51B5', fontWeight:'500'}} onClick={onClose} className="cancel-btn">
             Cancel
           </button>
         </div>

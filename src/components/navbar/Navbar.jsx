@@ -10,7 +10,8 @@ const Navbar = () => {
   const location = useLocation();
   const showAuthLinks = location.pathname === '/' || location.pathname === '/Register';
   const { cart } = useCart();
-  const totalUniqueItems = Object.values(cart).filter(qty => qty > 0).length;
+  const totalUniqueItems = Object.values(cart).filter(item => item.qty > 0).length;
+
 
   const [showpopup, setshowpopup] = useState(false);
 

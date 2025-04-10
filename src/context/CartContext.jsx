@@ -1,24 +1,40 @@
-import { createContext, useState, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState({}); // { "burger": 2, "pizza": 1, ... }
+  const [cart, setCart] = useState({});
 
-  const increment = (productName) => {
-    setCart((prev) => ({
-      ...prev,
-      [productName]: (prev[productName] || 0) + 1,
-    }));
-  };
-
-  const decrement = (productName) => {
+  const increment = (name, price) => {
     setCart((prev) => {
-      const current = prev[productName] || 0;
-      if (current <= 0) return prev;
+      const existing = prev[name] || { qty: 0, price };
       return {
         ...prev,
-        [productName]: current - 1,
+        [name]: {
+          qty: existing.qty + 1,
+          price: existing.price,
+        },
+      };
+    });
+  };
+
+  const decrement = (name) => {
+    setCart((prev) => {
+      const existing = prev[name];
+      if (!existing) return prev;
+
+      const newQty = existing.qty - 1;
+      if (newQty <= 0) {
+        const { [name]: _, ...rest } = prev;
+        return rest;
+      }
+
+      return {
+        ...prev,
+        [name]: {
+          ...existing,
+          qty: newQty,
+        },
       };
     });
   };

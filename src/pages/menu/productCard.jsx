@@ -4,7 +4,7 @@ import "./style.css";
 
 const ProductCard = ({ name, price, image }) => {
   const { cart, increment, decrement } = useCart();
-  const count = cart[name] || 0;
+  const qty = cart[name]?.qty || 0;
 
   return (
     <div className="product-card">
@@ -15,16 +15,18 @@ const ProductCard = ({ name, price, image }) => {
         <p>{name}</p>
         <span>Price: ₹{price}</span>
 
-        {count > 0 && (
+        {qty > 0 && (
           <>
-            <span>Total: {count}</span>
-            <span>Cost (INR): {count * price}</span>
+            <span>Total: {qty}</span>
+            <span>Cost (INR): {qty * price}</span>
           </>
         )}
 
         <div className="btns">
-          <button onClick={() => increment(name)} className="increment btn">+</button>
-          <button onClick={() => decrement(name)} className="decrement btn">-</button>
+          <button onClick={() => increment(name, price)}>+</button>
+          <button onClick={() => decrement(name)} disabled={qty === 0}>
+            -
+          </button>
         </div>
       </div>
     </div>
